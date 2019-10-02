@@ -1,0 +1,170 @@
+.headerMobile{
+	position: relative;
+	display: flex;
+    flex-direction: column;
+	z-index: 99999;
+	&_container{
+        &-navigation{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+			height: 60px;
+            position: absolute;
+			&_menu{
+				display: flex;
+				align-items: center;
+				&-icon{
+					.menu {
+						width: 30px;
+						height: 30px;
+						margin: 0 10px;
+						cursor: pointer;
+						.hamburguer {
+							position: relative;
+							display: block;
+							background: #ff0000;
+							width: 30px;
+							height: 3px;
+							top: 14px;
+							transition: .3s ease-in-out;
+							&:before,
+							&:after {
+								background: #ff0000;
+								content: '';
+								display: block;
+								width: 100%;
+								height: 100%;
+								position: absolute;
+								transition: .3s ease-in-out;
+							}
+							&:before {
+								top: -10px;
+							}
+							&:after {
+								bottom: -10px;
+							}
+						}
+					}
+					input {
+						display: none;
+						&:checked ~ label .hamburguer {
+							transform: rotate(45deg);
+						}
+						&:checked ~ label .hamburguer:before {
+							transform: rotate(90deg);
+							top: 0;
+						}
+						&:checked ~ label .hamburguer:after {
+							transform: rotate(90deg);
+							bottom: 0;
+						}
+					}
+				}
+				.barra_nav{
+					background: rgba(0,0,0,.9);
+				    padding: 1em;
+				    margin: 0;
+			        height: 100%;
+			        width: 100%;
+			        position: fixed;
+			        z-index: 1;
+			        top: 0;
+			        left: -110%;
+					transition: left 0.3s ease-out;
+					&-busca-mobile{
+						display: none;
+						@media(max-width: 639px){
+							display: block;
+							display: flex;
+							align-items: center;
+							margin: 3rem 0 0 0;
+							input{
+								border: 1px solid #ff0000;
+								background-color: transparent;
+								color: #ff0000;
+								font-size: 1.2rem;
+								margin-right: 15px;
+								border-radius: 2px;
+								padding: 5px 10px;
+								outline: none;
+							}
+							img{
+								width: 20px;
+								margin-right: 2rem;
+							}
+						}
+					}
+					&-menu-principal{
+						list-style: none;
+						margin-top: 2rem;
+                        li {
+                            padding: .6em 0;
+                            a{
+                                text-decoration: none;
+								color: #fff;
+								font-size: 1rem;
+								text-transform: uppercase;
+								font-weight: bold;
+                                &:hover{
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+				}
+            }
+            &_busca{
+                display: flex;
+                align-items: center;
+                input{
+                    border: 1px solid #ff0000;
+                    background-color: transparent;
+                    color: #ff0000;
+                    font-size: 13px;
+                    margin-right: 15px;
+                    border-radius: 2px;
+                    padding: 5px 10px;
+                    outline: none;
+                }
+                img{
+                    width: 20px;
+                    margin-right: 2rem;
+				}
+				@media(max-width: 639px){
+					display: none;
+				}
+            }
+		}
+    }
+    &_bgWatch{
+        img{
+            width: 100%;
+        }
+    }
+}
+.menu-overlay{
+	z-index: 99998;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #000;
+	opacity: 0;
+	transition: opacity .3s ease-out;
+}
+.menu-ativo{
+	.barra_nav{
+		left: 0;
+	}
+	.menu-overlay{
+		opacity: .5;
+    }
+    .hamburguer{
+        z-index: 2;
+    }
+    .menu-principal{
+        margin-top: 2rem;
+    }
+}
